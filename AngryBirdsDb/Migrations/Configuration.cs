@@ -4,6 +4,7 @@ namespace AngryBirdsDb.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using AngryBirdsDb.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<AngryBirdsDb.GameContext>
     {
@@ -38,7 +39,7 @@ namespace AngryBirdsDb.Migrations
             };
             context.Tracks.AddOrUpdate(track);
 
-            GameList gameJ = new GameList()
+            Game gameJ = new Game()
             {
                 GameId = 1,
                 PlayerId = 1,
@@ -46,9 +47,9 @@ namespace AngryBirdsDb.Migrations
                 GameScore = 8,
 
             };
-            context.GameLists.Add(gameJ);
+            context.Games.Add(gameJ);
 
-            GameList gameT = new GameList()
+            Game gameT = new Game()
             {
                 GameId = 2,
                 PlayerId = 2,
@@ -56,9 +57,9 @@ namespace AngryBirdsDb.Migrations
                 GameScore = 6,
 
             };
-            context.GameLists.AddOrUpdate(gameT);
+            context.Games.AddOrUpdate(gameT);
 
-
-        }
+        
+    }
     }
 }

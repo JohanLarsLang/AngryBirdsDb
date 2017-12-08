@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AngryBirdsDb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -106,7 +107,7 @@ namespace AngryBirdsDb
             {
                 int playerId = GetPlayerId(playerName);
 
-                var queryTracks = (from x in context.GameLists
+                var queryTracks = (from x in context.Games
                                    where x.PlayerId == playerId
                                    select x);
 
@@ -241,7 +242,7 @@ namespace AngryBirdsDb
         {
             using (var context = new GameContext())
             {
-                var queryTrackIdMax = (from x in context.GameLists
+                var queryTrackIdMax = (from x in context.Games
                                        where x.PlayerId == playerId
                                        orderby x.TrackId descending
                                        select x.TrackId).First();
@@ -254,7 +255,7 @@ namespace AngryBirdsDb
         {
             using (var context = new GameContext())
             {
-                var queryGameScore = (from x in context.GameLists
+                var queryGameScore = (from x in context.Games
                                       where x.PlayerId == playerId && x.TrackId == trackId
                                       select x.GameScore).First();
 
@@ -272,12 +273,12 @@ namespace AngryBirdsDb
         {
             using (var context = new GameContext())
             {
-                var queryTrackHighScore = (from x in context.GameLists
+                var queryTrackHighScore = (from x in context.Games
                                            where x.TrackId == trackId
                                            orderby x.GameScore
                                            select x.GameScore).First();
 
-                var queryPlayerIdHighScore = (from x in context.GameLists
+                var queryPlayerIdHighScore = (from x in context.Games
                                               where x.TrackId == trackId && x.GameScore == queryTrackHighScore
                                               select x.PlayerId).First();
 
@@ -313,7 +314,7 @@ namespace AngryBirdsDb
 
                 int playerId = GetPlayerId(playerName);
 
-                var queryTrackIdExist = (from x in context.GameLists
+                var queryTrackIdExist = (from x in context.Games
                                        where x.PlayerId == playerId
                                        select x.TrackId).Count();
 
@@ -321,7 +322,7 @@ namespace AngryBirdsDb
 
                 if (queryTrackIdExist > 0)
                 {
-                    var queryTrackIdGame = (from x in context.GameLists
+                    var queryTrackIdGame = (from x in context.Games
                                             where x.PlayerId == playerId
                                             orderby x.TrackId descending
                                             select x.TrackId).First();
@@ -412,7 +413,7 @@ namespace AngryBirdsDb
 
             using (var context = new GameContext())
             {
-                context.GameLists.Add(new GameList()
+                context.Games.Add(new Game()
                 {
                     GameId = nextGameId,
                     PlayerId = playerId,
@@ -428,7 +429,7 @@ namespace AngryBirdsDb
         {
             using (var context = new GameContext())
             {
-                context.GameLists.AddOrUpdate(new GameList()
+                context.Games.AddOrUpdate(new Game()
                 {
                     GameId = gameId,
                     PlayerId = playerId,
@@ -444,7 +445,7 @@ namespace AngryBirdsDb
         {
             using (var context = new GameContext())
             {
-                var valueGameId = (from x in context.GameLists
+                var valueGameId = (from x in context.Games
                                    orderby x.GameId descending
                                    select x.GameId).First();
 
@@ -459,7 +460,7 @@ namespace AngryBirdsDb
         {
             using (var context = new GameContext())
             {
-                var queryGameId = (from x in context.GameLists
+                var queryGameId = (from x in context.Games
                                    where x.PlayerId == playerId && x.TrackId == trackId
                                    select x.GameId).First();
 

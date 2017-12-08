@@ -1,10 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AngryBirdsDb
+namespace AngryBirdsDb.Models
 {
-    [Table("GameList")]
-    public class GameList
+    //[Table("GameList")]
+    public class Game
     {
         [Key]
         public int GameId { get; set; }
@@ -23,6 +26,6 @@ namespace AngryBirdsDb
         [ForeignKey("TrackId")]
         public virtual Track Track { get; set; }
 
-
+    
     }
 }

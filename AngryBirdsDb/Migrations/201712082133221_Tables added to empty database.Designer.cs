@@ -7,13 +7,13 @@ namespace AngryBirdsDb.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Tablesfrodbaddedwithiniatialvaluesinseed : IMigrationMetadata
+    public sealed partial class Tablesaddedtoemptydatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Tablesfrodbaddedwithiniatialvaluesinseed));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Tablesaddedtoemptydatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712070918177_Tables fro db added with iniatial values in seed"; }
+            get { return "201712082133221_Tables added to empty database"; }
         }
         
         string IMigrationMetadata.Source

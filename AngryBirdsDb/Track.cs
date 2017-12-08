@@ -1,9 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AngryBirdsDb
+namespace AngryBirdsDb.Models
 {
-    [Table("TrackList")]
+    
     public class Track
     {
         [Key]
@@ -11,5 +14,7 @@ namespace AngryBirdsDb
 
         public int NrBird { get; set; }
 
+        public virtual IList<Game> Games { get; set; }
+              
     }
 }
