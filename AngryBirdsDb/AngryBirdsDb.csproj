@@ -50,10 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameContext.cs" />
-    <Compile Include="GameList.cs" />
-    <Compile Include="Migrations\201712070918177_Tables fro db added with iniatial values in seed.cs" />
-    <Compile Include="Migrations\201712070918177_Tables fro db added with iniatial values in seed.Designer.cs">
-      <DependentUpon>201712070918177_Tables fro db added with iniatial values in seed.cs</DependentUpon>
+    <Compile Include="Game.cs" />
+    <Compile Include="Migrations\201712082133221_Tables added to empty database.cs" />
+    <Compile Include="Migrations\201712082133221_Tables added to empty database.Designer.cs">
+      <DependentUpon>201712082133221_Tables added to empty database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712082136088_Initial values added with seed.cs" />
+    <Compile Include="Migrations\201712082136088_Initial values added with seed.Designer.cs">
+      <DependentUpon>201712082136088_Initial values added with seed.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />
@@ -67,8 +71,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712070918177_Tables fro db added with iniatial values in seed.resx">
-      <DependentUpon>201712070918177_Tables fro db added with iniatial values in seed.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712082133221_Tables added to empty database.resx">
+      <DependentUpon>201712082133221_Tables added to empty database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712082136088_Initial values added with seed.resx">
+      <DependentUpon>201712082136088_Initial values added with seed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

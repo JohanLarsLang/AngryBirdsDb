@@ -3,12 +3,12 @@ namespace AngryBirdsDb.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Tablesfrodbaddedwithiniatialvaluesinseed : DbMigration
+    public partial class Tablesaddedtoemptydatabase : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.GameList",
+                "dbo.Games",
                 c => new
                     {
                         GameId = c.Int(nullable: false, identity: true),
@@ -17,22 +17,22 @@ namespace AngryBirdsDb.Migrations
                         GameScore = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.GameId)
-                .ForeignKey("dbo.PlayerList", t => t.PlayerId, cascadeDelete: true)
-                .ForeignKey("dbo.TrackList", t => t.TrackId, cascadeDelete: true)
+                .ForeignKey("dbo.Players", t => t.PlayerId)
+                .ForeignKey("dbo.Tracks", t => t.TrackId)
                 .Index(t => t.PlayerId)
                 .Index(t => t.TrackId);
             
             CreateTable(
-                "dbo.PlayerList",
+                "dbo.Players",
                 c => new
                     {
                         PlayerId = c.Int(nullable: false, identity: true),
-                        PlayerName = c.String(nullable: false, maxLength: 50),
+                        PlayerName = c.String(nullable: false, maxLength: 100),
                     })
                 .PrimaryKey(t => t.PlayerId);
             
             CreateTable(
-                "dbo.TrackList",
+                "dbo.Tracks",
                 c => new
                     {
                         TrackId = c.Int(nullable: false, identity: true),
@@ -44,13 +44,13 @@ namespace AngryBirdsDb.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.GameList", "TrackId", "dbo.TrackList");
-            DropForeignKey("dbo.GameList", "PlayerId", "dbo.PlayerList");
-            DropIndex("dbo.GameList", new[] { "TrackId" });
-            DropIndex("dbo.GameList", new[] { "PlayerId" });
-            DropTable("dbo.TrackList");
-            DropTable("dbo.PlayerList");
-            DropTable("dbo.GameList");
+            DropForeignKey("dbo.Games", "TrackId", "dbo.Tracks");
+            DropForeignKey("dbo.Games", "PlayerId", "dbo.Players");
+            DropIndex("dbo.Games", new[] { "TrackId" });
+            DropIndex("dbo.Games", new[] { "PlayerId" });
+            DropTable("dbo.Tracks");
+            DropTable("dbo.Players");
+            DropTable("dbo.Games");
         }
     }
 }

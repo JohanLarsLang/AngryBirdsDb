@@ -1,4 +1,5 @@
 ﻿using System;
+using AngryBirdsDb.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,7 +37,7 @@ namespace AngryBirdsDb
             };
             context.Tracks.AddOrUpdate(track);
 
-            GameList gameJ = new GameList()
+            Game gameJ = new Game()
             {
                 GameId = 1,
                 PlayerId = 1,
@@ -44,9 +45,9 @@ namespace AngryBirdsDb
                 GameScore = 8,
 
             };
-            context.GameLists.Add(gameJ);
+            context.Games.Add(gameJ);
 
-            GameList gameT = new GameList()
+            Game gameT = new Game()
             {
                 GameId = 2,
                 PlayerId = 2,
@@ -54,7 +55,7 @@ namespace AngryBirdsDb
                 GameScore = 6,
 
             };
-            context.GameLists.AddOrUpdate(gameT);
+            context.Games.AddOrUpdate(gameT);
 
         }
 

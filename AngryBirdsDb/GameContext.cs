@@ -1,4 +1,7 @@
-﻿using System.Data.Entity;
+﻿using AngryBirdsDb.Models;
+using System.Data.Entity;
+using System.Linq;
+using System;
 
 namespace AngryBirdsDb
 {
@@ -9,6 +12,25 @@ namespace AngryBirdsDb
         public GameContext() : base(connectionString) { }
         public DbSet<Player> Players { get; set; }
         public DbSet<Track> Tracks { get; set; }
-        public DbSet<GameList> GameLists { get; set; }
+        public DbSet<Game> Games { get; set; }
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            
+            modelBuilder.Entity<Player>().Property(p => p.PlayerName).IsRequired().HasMaxLength(100);
+
+            modelBuilder.Entity<Game>().HasKey(l => l.GameId);
+
+         modelBuilder.Entity<Game>().HasRequired(m => m.Player).WithMany(p => p.Games).WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Game>().HasRequired(m => m.Track).WithMany(p => p.Games).WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<Game>().ToTable("Game");
+
+            base.OnModelCreating(modelBuilder);
+            
+            
+        }
     }
 }

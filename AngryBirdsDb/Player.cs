@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AngryBirdsDb
+namespace AngryBirdsDb.Models
 {
-    [Table("PlayerList")]
     public class Player
     {
         [Key]
@@ -11,8 +13,10 @@ namespace AngryBirdsDb
 
         [Required]
         [Column("PlayerName", TypeName = "nvarchar")]
-        [StringLength(50)]
+        [StringLength(100)]
         public string PlayerName { get; set; }
 
+        public virtual IList<Game> Games { get; set; }
+         
     }
 }
